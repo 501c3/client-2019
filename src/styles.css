@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+header{
+  background-color: darkblue;
+  height: 80px;
+  color: whitesmoke;
+  padding: 10px 10px;
+  display: flex ;
+  overflow: hidden;
+}
+
+.content{
+  padding: 10px 10px;
+}
+
+.has-success{border-width: 1px; border-color: forestgreen}
+.has-danger{border-width: 1px; border-color: darkred}
+
+a:link{color: darkblue;}
+a:visited{color: dodgerblue;}
+a:hover{color: darkred;}
+a:active{color: black;}
+
+.btn{height: 30px; width: 70px; padding: 0;}
+
+.form-control-feedback{margin-left: 30px;}
+
+ul {list-style-type: none;}
+
+li {text-align: -webkit-left;}
+
+footer{
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin-top: 10px;
+  height: 140px; /* Set the fixed height of the footer here */
+  background-color: darkblue;
+  padding: 10px 10px;
+  color: whitesmoke;
+}
+
+
+footer a:link{color: yellow; }
+
+

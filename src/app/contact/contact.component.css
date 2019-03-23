@@ -1,0 +1,14 @@
+.card{
+  width: 500px;
+  color: whitesmoke;
+  background-color: darkblue;
+  padding-bottom: 20px;
+}
+
+li{
+  color: yellow;
+}
+
+.card fieldset{
+  color: whitesmoke;
+}

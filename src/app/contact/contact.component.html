@@ -1,0 +1,161 @@
+ <div class="container" align="center">
+    <h1>Contact Information</h1>
+    <div class = "card bg-color">
+      <form (ngSubmit)="onSubmit()"
+            [formGroup]="form"
+            autocomplete="off"
+            novalidate
+      >
+        <input type="hidden" name="contact.id" />
+        <fieldset class="form-group" >
+          <legend>Name</legend>
+
+              <div formGroupName="name"  class="input-group-text">
+              <input placeholder="Title" type="text"
+                     class="form-control"
+                     [size]="1"
+                     style="width:60px;"
+                     formControlName="title"/>
+              <input placeholder="First"
+                     type="text"
+                     class="form-control"
+                     [size]="12"
+                     formControlName="first"
+                     [ngClass]="{
+                        'has-success': first.valid && (first.dirty || first.touched),
+                        'has-danger': first.invalid && (first.dirty || first.touched)
+                     }" />
+              <input placeholder="MI"
+                     type="text"
+                     style="width: 60px;"
+                     class="form-control"
+                     [size]="2"
+                     formControlName="middle"/>
+              <input placeholder="Last"
+                     type="text"
+                     class="form-control"
+                     [size]="4"
+                     formControlName="last"
+                     [ngClass]="{
+                        'has-success': last.valid && (last.dirty || last.touched),
+                        'has-danger': last.invalid && (last.dirty || last.touched)}"/>
+              <input placeholder="Suffix"
+                     type="text"
+                     class="form-control"
+                     style="width:70px;"
+                     [size]="2"
+                     formControlName="suffix"/>
+              </div>
+          <div class = form-control-feedback>
+            <ul *ngIf="((first.errors && first.touched)|| (last.errors && last.touched))"
+                class="field-error-message list-unstyled">
+              <li *ngIf="first.errors  && first.touched">First name is required.</li>
+              <li *ngIf="last.errors && last.touched">Last name is required.</li>
+            </ul>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend>Contact Information</legend>
+
+          <div class="input-group-text" >
+            <input placeholder="Email"
+                   size="43"
+                   type="email"
+                   formControlName="email"
+                   class="form-control"
+                   [ngClass]="{'has-success': email.valid && (email.dirty || email.touched),
+                               'has-danger': email.invalid && (email.dirty || email.touched )}"/>
+          </div>
+          <div class="input-group-text">
+            <input placeholder="Phone" [size]="14"
+                   formControlName="phone"
+                   [dropSpecialCharacters]="false"
+                   type="text" mask='(000) 000-0000'
+                   class="form-control"
+                   [ngClass]="{'has-success': phone.value.toString().length==14 && (phone.dirty || phone.touched),
+                               'has-danger': phone.value.toString().length<14 && (phone.dirty || phone.touched)}"/>
+
+            <input placeholder="Mobile" [size]="14"
+                   formControlName="mobile"
+                   [dropSpecialCharacters]="false"
+                   type="text" mask="(000) 000-0000"
+                   class="form-control"/>
+          </div>
+          <div class = form-control-feedback>
+            <ul *ngIf="((email.errors && email.touched)|| (phone.errors && phone.touched))"
+                class="field-error-message list-unstyled">
+              <li *ngIf="email.errors  && email.touched">Valid email required.</li>
+              <li *ngIf="phone.value.toString().length<14  && phone.touched">Valid phone required.</li>
+            </ul>
+          </div>
+
+        </fieldset>
+
+      <fieldset class="form-group">
+        <legend>Address/Organization</legend>
+          <div formGroupName="address" >
+            <div class="input-group-text">
+              <input placeholder="Country" [size]="43"
+                     type="text"
+                     formControlName="country"
+                     class="form-control"
+                     [ngClass]="{ 'has-success': country.valid && (country.dirty || country.touched),
+                                  'has-danger': country.invalid && (country.dirty || country.touched)}"/>
+            </div>
+            <div class="input-group-text">
+              <input placeholder="Organization or Department" [size]="43"
+                     formControlName="organization" class="form-control"/>
+            </div>
+            <div class="input-group-text">
+              <input placeholder="Street" [size]="43"
+                     formControlName="street" class="form-control"
+                     [ngClass]="{'has-success': street.valid && (street.dirty || street.touched),
+                                 'has-danger': street.invalid && (street.dirty || street.touched)}"/>
+            </div>
+            <div class="input-group-text">
+              <input placeholder="City" [size]="21"
+                     formControlName="city"
+                     type="text"
+                     class="form-control"
+                     [ngClass]="{'has-success': city.valid && (city.dirty || city.touched),
+                                 'has-danger': city.invalid && (city.dirty || city.touched)}"/>
+              <input placeholder="ST"  [size]="3"
+                     formControlName="state"
+                     style="width:56px;"
+                     type="text"
+                     class="form-control"
+                     [ngClass]="{'has-success': state.valid && (state.dirty || state.touched),
+                                 'has-danger': state.invalid && (state.dirty || state.touched)}"/>
+              <input placeholder="Postal or Zip" [size]="14"
+                     formControlName="postal"
+                     type="text"
+                     class="form-control"
+                     [ngClass]="{'has-success': postal.valid && (postal.dirty || postal.touched),
+                                 'has-danger': postal.invalid && (postal.dirty || postal.touched)}"/>
+            </div>
+            <div class = form-control-feedback>
+              <ul *ngIf="(country.touched && street.touched && state.touched && postal.touched)"
+                  class="field-error-message list-unstyled">
+                <li *ngIf="country.errors">Country required.</li>
+                <li *ngIf="street.errors">Street required.</li>
+                <li *ngIf="city.errors">City required.</li>
+                <li *ngIf="state.errors">State required.</li>
+                <li *ngIf="postal.errors">Postal required.</li>
+              </ul>
+            </div>
+      </div>
+      </fieldset>
+
+      <button type="submit" class = "btn btn-light" [disabled]="!this.formValid" >Submit</button>
+      </form>
+  </div>
+
+
+
+<div class = "debug">
+  <h4>Form Value:</h4>
+  <pre>{{form.value|json}}</pre>
+</div>
+
+ </div>

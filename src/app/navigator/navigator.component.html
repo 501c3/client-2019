@@ -1,0 +1,15 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col-11">
+        <ul class="nav">
+          <li class="nav-item" *ngFor="let item of menu">
+            <a class="nav-link" routerLink="{{item}}" routerLinkActive="active">{{item|titlecase}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </div>
+
